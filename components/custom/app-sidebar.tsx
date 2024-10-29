@@ -3,6 +3,7 @@
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
 import { type User } from 'next-auth';
+
 import { SidebarHistory } from '@/components/custom/sidebar-history';
 import { SidebarUserNav } from '@/components/custom/sidebar-user-nav';
 import {
