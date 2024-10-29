@@ -43,7 +43,6 @@ export function Chat({
         className="flex flex-col min-w-0 gap-6 flex-1 overflow-y-scroll"
       >
         {messages.length === 0 && <Overview />}
-
         {messages.map((message) => (
           <PreviewMessage
             key={message.id}
