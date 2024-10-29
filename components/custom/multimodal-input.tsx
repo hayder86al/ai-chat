@@ -1,7 +1,6 @@
 'use client';
 
 import { Attachment, ChatRequestOptions, CreateMessage, Message } from 'ai';
-import { motion } from 'framer-motion';
 import React, {
   useRef,
   useEffect,
@@ -19,19 +18,6 @@ import useWindowSize from './use-window-size';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 
-const suggestedActions = [
-  {
-    title: 'What is the weather',
-    label: 'in San Francisco?',
-    action: 'What is the weather in San Francisco?',
-  },
-  {
-    title: "Answer like I'm 5,",
-    label: 'why is the sky blue?',
-    action: "Answer like I'm 5, why is the sky blue?",
-  },
-];
-
 export function MultimodalInput({
   input,
   setInput,
@@ -39,8 +25,6 @@ export function MultimodalInput({
   stop,
   attachments,
   setAttachments,
-  messages,
-  append,
   handleSubmit,
 }: {
   input: string;
@@ -153,39 +137,6 @@ export function MultimodalInput({
 
   return (
     <div className="relative w-full flex flex-col gap-4">
-      {messages.length === 0 &&
-        attachments.length === 0 &&
-        uploadQueue.length === 0 && (
-          <div className="grid sm:grid-cols-2 gap-2 w-full">
-            {suggestedActions.map((suggestedAction, index) => (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ delay: 0.05 * index }}
-                key={index}
-                className={index > 1 ? 'hidden sm:block' : 'block'}
-              >
-                <Button
-                  variant="ghost"
-                  onClick={async () => {
-                    append({
-                      role: 'user',
-                      content: suggestedAction.action,
-                    });
-                  }}
-                  className="text-left border rounded-xl px-4 py-3.5 text-sm flex-1 gap-1 sm:flex-col w-full h-auto justify-start items-start"
-                >
-                  <span className="font-medium">{suggestedAction.title}</span>
-                  <span className="text-muted-foreground">
-                    {suggestedAction.label}
-                  </span>
-                </Button>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
       <input
         type="file"
         className="fixed -top-4 -left-4 size-0.5 opacity-0 pointer-events-none"
