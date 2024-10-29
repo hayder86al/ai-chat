@@ -6,6 +6,11 @@ export const models = [
     description: 'For complex, multi-step tasks',
   },
   {
+    label: 'claude-3-5-sonnet-latest',
+    name: 'claude-3-5-sonnet-20241022',
+    description: 'For complex, multi-step tasks',
+  },
+  {
     label: 'GPT 4o mini',
     name: 'gpt-4o-mini',
     description: 'Small model for fast, lightweight tasks',
